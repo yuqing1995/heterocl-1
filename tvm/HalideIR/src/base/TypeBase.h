@@ -23,7 +23,8 @@ typedef enum halideir_type_code_t
     halideir_type_int = 0,   //!< signed integers
     halideir_type_uint = 1,  //!< unsigned integers
     halideir_type_float = 2, //!< floating point numbers
-    halideir_type_handle = 3 //!< opaque pointer type (void *)
+    halideir_type_handle = 3, //!< opaque pointer type (void *)
+    halideir_type_apfloat = 4 // arbitrary-precision
 } halideir_type_code_t;
 
 // Note that while __attribute__ can go before or after the declaration,

@@ -305,6 +305,7 @@ struct Type {
     static const halideir_type_code_t UInt = halideir_type_uint;
     static const halideir_type_code_t Float = halideir_type_float;
     static const halideir_type_code_t Handle = halideir_type_handle;
+    static const halideir_type_code_t APFloat = halideir_type_apfloat;
     // @}
 
     QuanMode qmode;
@@ -392,6 +393,9 @@ struct Type {
     /** Is this type a floating point type (float or double). */
     bool is_float() const {return code() == Float;}
 
+    /** Is this type a ap floating point type. */
+    bool is_apfloat() const {return code() == APFloat;}
+
     /** Is this type a signed integer type? */
     bool is_int() const {return code() == Int && fracs() == 0;}
 
@@ -463,6 +467,11 @@ inline Type Int(int bits, int lanes = 1, int fracs = 0) {
 /** Constructing an unsigned integer type */
 inline Type UInt(int bits, int lanes = 1, int fracs = 0) {
     return Type(Type::UInt, bits, lanes, fracs);
+}
+
+/** Construct a APfloating-point type */
+inline Type APFloat(int bits = 16, int fracs = 7, int lanes = 1) {
+    return Type(Type::APFloat, bits, fracs, lanes);
 }
 
 /** Construct a floating-point type */
